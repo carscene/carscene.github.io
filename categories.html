@@ -1,0 +1,31 @@
+---
+layout: main
+title: James Olejar &bull; Coding Categories
+description: Coding tutorials, hints, and thoughts. Leave a comment and tell me what you think.
+permalink: categories
+page_name: categories
+---
+
+<div class="section-header">
+  <h1>Categories</h1>
+</div>
+
+<div class="tags-expo" style="padding: 0 20px;">
+  <div class="tags-expo-list">
+    {% for tag in site.categories %}
+    <a href="#{{ tag[0] | slugify }}" class="post-tag nounderline">{{ tag[0] }}</a>
+    {% endfor %}
+  </div>
+  <div class="tags-expo-section">
+    {% for tag in site.categories %}
+    <h3 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h3>
+    <ul class="list-el" style="padding-left: 0;">
+      {% for post in tag[1] %}
+      <li>
+        {{ post.date | date: '%m/%d/%Y' }} &raquo;  <a href="{{ post.url }}">{{ post.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </div>
+</div>
